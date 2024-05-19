@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Day and Night Frame</title>
+    <meta property="fc:frame" content="vNext" />
+    <meta id="frame-image" property="fc:frame:image" content="" />
+    <meta id="frame-button1" property="fc:frame:button:1" content="" />
+    <meta property="fc:frame:button:1:action" content="follow" />
+    <meta id="frame-button2" property="fc:frame:button:2" content="Share Frame" />
+    <meta property="fc:frame:button:2:action" content="share" />
+</head>
+<body>
+    <h1 id="greeting"></h1>
+    <img id="image" src="" alt="Day or Night Image">
+    <button onclick="followCaster()">Follow Caster</button>
+    <button onclick="shareFrame()">Share Frame</button>
+    
+    <script>
+        function updateFrame() {
+            const now = new Date();
+            const hours = now.getHours();
+            const isDayTime = hours >= 6 && hours < 18;
+
+            const greeting = document.getElementById('greeting');
+            const image = document.getElementById('image');
+            const frameImage = document.getElementById('frame-image');
+            const frameButton1 = document.getElementById('frame-button1');
+
+            if (isDayTime) {
+                greeting.innerText = "Good Morning";
+                image.src = "https://example.com/sun.png";  // Replace with your sun image URL
+                frameImage.setAttribute("content", "https://example.com/sun.png");  // Replace with your sun image URL
+                frameButton1.setAttribute("content", "Follow Caster");
+            } else {
+                greeting.innerText = "Good Night";
+                image.src = "https://example.com/moon.png";  // Replace with your moon image URL
+                frameImage.setAttribute("content", "https://example.com/moon.png");  // Replace with your moon image URL
+                frameButton1.setAttribute("content", "Follow Caster");
+            }
+        }
+
+        function followCaster() {
+            // Logic to follow the caster
+            alert('Follow Caster button clicked');
+        }
+
+        function shareFrame() {
+            // Logic to share the frame
+            alert('Share Frame button clicked');
+        }
+
+        // Update frame on load
+        updateFrame();
+    </script>
+</body>
+</html>
